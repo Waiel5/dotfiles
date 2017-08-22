@@ -2,6 +2,30 @@
 " maintained by waiel
 
 " ============================================================================
+" Plugins (vim-plug)
+" ============================================================================
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
+
+" ============================================================================
 " General
 " ============================================================================
 set nocompatible
@@ -82,6 +106,21 @@ vnoremap K :m '<-2<CR>gv=gv
 " Keep visual selection when indenting
 vnoremap < <gv
 vnoremap > >gv
+
+" NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$', '\.DS_Store', 'node_modules', '__pycache__']
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" CtrlP
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " ============================================================================
 " Status Line
