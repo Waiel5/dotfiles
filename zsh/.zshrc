@@ -21,6 +21,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Source additional aliases
+[ -f "$HOME/.dotfiles/zsh/aliases.sh" ] && source "$HOME/.dotfiles/zsh/aliases.sh"
+
 # ============================================================================
 # PATH
 # ============================================================================
