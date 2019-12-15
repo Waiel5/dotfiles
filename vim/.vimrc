@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -32,6 +33,12 @@ set nocompatible
 filetype off
 syntax on
 filetype plugin indent on
+
+" Colorscheme
+set termguicolors
+set background=dark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = "medium"
 
 set encoding=utf-8
 set fileencoding=utf-8
